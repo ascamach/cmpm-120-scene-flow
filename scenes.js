@@ -105,7 +105,7 @@ class Settings extends Phaser.Scene {
 
         this.add.image(200, 200, "sound_settings");
 
-        this.add.text(50, 400, "^ Similar settings will be added.");
+        this.add.text(50, 400, "^ Similar settings will be added. Renjs has a settings scene we can use.");
 
         this.add.text(400, 600, "Back to gameplay")
             .setInteractive()
