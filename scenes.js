@@ -126,6 +126,8 @@ class betterCredits extends Phaser.Scene {
     create() {
         this.add.text(50, 100, "Congratulations, you picked up the apple!")
             .setFontSize(25);
+
+        this.add.text(50, 300, "Credits will go here!");
         
         this.add.text(50, 600, "Back to title screen.")
             .setInteractive()
