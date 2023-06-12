@@ -38,7 +38,11 @@ class Gameplay extends Phaser.Scene {
             .on('pointerdown', () => {
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.time.delayedCall(1000, () => {
-                    this.scene.start("credits");
+                    if (apple_con == false) {
+                        this.scene.start("credits");
+                    } else if (apple_con == true) {
+                        this.scene.start("better_credits");
+                    }
             });
         });
 
@@ -82,11 +86,7 @@ class Credits extends Phaser.Scene {
                 });
             });
 
-        if(apple_con == false) {
-            this.add.text(50, 300, "You did not click on the apple.");
-        } else if(apple_con == true) {
-            this.add.text(50, 300, "You picked up the apple.");
-        }
+        this.add.text(50, 300, "You did not click on the apple.");
     }
 }
 
@@ -114,6 +114,26 @@ class Settings extends Phaser.Scene {
                 this.time.delayedCall(1000, () => {
                     this.scene.start('gameplay');
                 })
+            });
+    }
+}
+
+class betterCredits extends Phaser.Scene {
+    constructor() {
+        super('better_credits');
+    }
+
+    create() {
+        this.add.text(50, 100, "Congratulations, you picked up the apple!")
+            .setFontSize(25);
+        
+        this.add.text(50, 600, "Back to title screen.")
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.time.delayedCall(1000, () => {
+                    this.scene.start("title");
+                });
             });
     }
 }
