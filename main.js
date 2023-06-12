@@ -3,6 +3,6 @@ const game = new Phaser.Game({
     width: 800,
     height: 800,
 
-    scene: [Title, Gameplay, Credits, Settings, betterCredits],
+    scene: [Title, Gameplay, Credits, Settings, betterCredits, Dialogue],
     title: "CMPM 120 Scene Flow Prototype"
 })

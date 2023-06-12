@@ -27,6 +27,7 @@ class Gameplay extends Phaser.Scene {
 
     preload() {
         this.load.image("apple", "./assets/apple.png");
+        this.load.image("person", "./assets/person.png");
     }
 
     create() {
@@ -52,6 +53,16 @@ class Gameplay extends Phaser.Scene {
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.time.delayedCall(1000, () => {
                     this.scene.start("settings");
+                });
+            });
+        
+        let person = this.add.image(400, 400, "person")
+            .setInteractive()
+            .setScale(1.25)
+            .on('pointerdown', () => {
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.time.delayedCall(1000, () => {
+                    this.scene.start("dialogue");
                 });
             });
 
@@ -135,6 +146,27 @@ class betterCredits extends Phaser.Scene {
                 this.cameras.main.fadeOut(1000, 0, 0, 0);
                 this.time.delayedCall(1000, () => {
                     this.scene.start("title");
+                });
+            });
+    }
+}
+
+class Dialogue extends Phaser.Scene {
+    constructor() {
+        super('dialogue');
+    }
+
+    create() {
+        this.cameras.main.fadeIn(1000, 0,0,0);
+        this.add.text(50, 100, "Interacting with characters will trigger dialogue scenes.");
+
+        this.add.text(50, 200, "Please view our Gameplay Prototype to see how that flows!");
+        this.add.text(50, 600, "Back to gameplay scene.")
+            .setInteractive()
+            .on('pointerdown', () => {
+                this.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.time.delayedCall(1000, () => {
+                    this.scene.start("gameplay");
                 });
             });
     }
